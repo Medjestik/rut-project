@@ -52,7 +52,7 @@ function AddUserPopup({ isOpen, onClose, popupName, onConfirm, isLoadingRequest,
 				<h2 className='popup__title popup__title_margin_bottom'>Добавление участника</h2>
 
         <div className='popup__field'>
-          <h4 className='popup__input-caption'>ФИО:</h4>
+          <h4 className='popup__input-caption'>ФИО (полностью):</h4>
           <div className='popup__input-field'>
             <input 
             className='popup__input'

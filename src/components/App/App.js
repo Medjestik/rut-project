@@ -38,7 +38,7 @@ function App() {
     <div className='page'>
       <Routes>
         <Route path='/teams/:teamId' element={
-          <Project />
+          <Project windowWidth={windowWidth} />
         }/>
       </Routes> 
     </div>

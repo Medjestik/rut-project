@@ -11,7 +11,7 @@ import Preloader from '../Preloader/Preloader.js';
 import DetailPopup from '../Popup/DetailPopup/DetailPopup.js';
 import AddUserPopup from '../Popup/AddUserPopup/AddUserPopup.js';
 
-function Project() { 
+function Project({ windowWidth }) { 
 
   const params = useParams();
 
@@ -144,8 +144,14 @@ function Project() {
               <h1 className='project__form-title'>Проектная деятельность</h1>
               <p className='project__form-text'>Выберите проект для своей команды.</p>
               <h2 className='project__title'>Команда - «{currentTeam.name}»</h2>
-              <p className='data__text'><span className='data__text_font_bold'>Капитан команды:</span>{currentTeam.captain_fullname}</p>
-              <button className='project__member-btn' type='button' onClick={showAddUserPopup}>Добавить участника</button>
+              {
+                currentTeam.participation.length > 0 
+                ?
+                <p className='data__text data__text_margin_top'><span className='data__text_font_bold'>Выбранный проект:</span>{currentTeam.participation[0].project.name}</p>
+                :
+                <span className='data__text data__text_type_empty data__text_margin_top'>Проект еще не выбран!</span>
+              }
+              <p className='data__text data__text_margin_top'><span className='data__text_font_bold'>Капитан команды:</span>{currentTeam.captain_fullname}</p>
               <p className='data__text data__text_font_bold data__text_margin_top'>Участники команды:</p>
               
               {
@@ -161,23 +167,27 @@ function Project() {
                 :
                 <span className='data__text data__text_type_empty'>Список пока пуст!</span>
               }
+              <button className='project__member-btn' type='button' onClick={showAddUserPopup}>Добавить участника</button>
 
               <p className='data__text data__text_font_bold data__text_margin_top'>Рекомендованное количество участников в команде от 4 до 7</p>
 
             </div>
             <div className='project__main'>
-              <div className='project__header'>
-                <div className='section__header'>
-                  <div className='section__header-item'>
-                    <span className='section__header-caption'>Направления проектов:</span>
-                    <PopupSelect filterType='byId' options={projectTags} currentOption={currentTag} onChooseOption={handleChangeTag} />
-                  </div>
-                  <div className='section__header-item'>
-                    <span className='section__header-caption'>Поиск по названию:</span>
-                    <Search type='large' id='project-search' data={currentTeam.possible_projects} onSearch={handleSearchProject} />
+              {
+                windowWidth > 833 &&
+                <div className='project__header'>
+                  <div className='section__header'>
+                    <div className='section__header-item'>
+                      <span className='section__header-caption'>Направления проектов:</span>
+                      <PopupSelect filterType='byId' options={projectTags} currentOption={currentTag} onChooseOption={handleChangeTag} />
+                    </div>
+                    <div className='section__header-item'>
+                      <span className='section__header-caption'>Поиск по названию:</span>
+                      <Search type='large' id='project-search' data={currentTeam.possible_projects} onSearch={handleSearchProject} />
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
               <ProjectList currentTeam={currentTeam} searchedPrograms={searchedProjects} onShow={showDetailPopup} />
             </div>
           </div>

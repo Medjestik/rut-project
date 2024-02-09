@@ -837,7 +837,8 @@ input[type=number] {
 
 @media all and (max-width: 833px) {
   .container {
-    padding: 60px 0px 16px 0px;
+    padding: 0px;
+    flex-direction: column;
   }
   .icon_margin_left {
     margin: 0px 0px 0px 8px;
@@ -895,5 +896,15 @@ input[type=number] {
   }
   .rec.rec-slider-container {
     margin: 0px;
+  }
+  .data__list_margin_top {
+    margin: 8px 0px 0px 0px;
+  }
+  .data__text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .data__text_margin_top {
+    margin-top: 8px;
   }
 }
