@@ -1,0 +1,30 @@
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.preloader-icon {
+  position: relative;
+  width: 100%;
+	margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preloader-icon__circle {
+  width:  24px;
+	height: 24px;
+	border: 1px solid var(--accent-grey-color);
+	border-bottom-color: var(--slider-color);
+	border-radius: 50%;
+  animation: spin .75s infinite linear;
+}
+
+@media all and (max-width: 833px) {
+  .preloader-icon__circle {
+    width:  16px;
+    height: 16px;
+  }
+}

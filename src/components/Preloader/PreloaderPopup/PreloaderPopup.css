@@ -1,0 +1,31 @@
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.preloader-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-popup__circle {
+	width:  74px;
+	height: 74px;
+	border: 1px solid var(--accent-grey-color);
+	border-bottom-color: var(--slider-color);
+	border-radius: 50%;
+  animation: spin .75s infinite linear;
+  margin-bottom: 24px;
+}
+.preloader-popup__caption {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 1.4;
+  color: var(--slider-color);
+}

@@ -1,0 +1,119 @@
+.table-card {
+  margin: 0px;
+  width: 100%;
+  position: relative;
+}
+.table-card__list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+.table-card__item {
+  padding: 0px 0px 28px 0px;
+  margin: 0px 0px 28px 0px;
+  border-bottom: 1px solid var(--slider-color);
+  box-sizing: border-box;
+  position: relative;
+}
+.table-card__item:last-of-type {
+  padding: 0px;
+  border-bottom: none;
+}
+.table-card__text {
+  margin: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--main-black-color);
+  min-width: 80px;
+  text-decoration: none;
+}
+.table-card__text_weight_bold {
+  font-weight: bold;
+}
+.table-card__text_color_grey {
+  color: var(--accent-grey-color);
+}
+.table-card__text_color_orange {
+  color: var(--accent-orange-color);
+}
+.table-card__text_type_cut {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+.table-card__text_type_active:hover {
+  cursor: pointer;
+  color: var(--accent-blue-color);
+}
+.table-card__date {
+  margin: 0px;
+}
+.table-card__title {
+  margin: 20px 0px 0px 0px;
+  font-size: 16px;
+  line-height: 20px;
+}
+.table-card__subtitle {
+  margin: 12px 0px 0px 0px;
+}
+.table-card__info {
+  width: 100%;
+  margin: 20px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+.table-card__info-list {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+.table-card__info-item {
+  margin: 0px 20px 0px 0px;
+}
+.table-card__info-item:last-of-type {
+  margin: 0px;
+}
+.table-card__link {
+  margin: 28px 0px 0px 0px;
+  font-weight: normal;
+  cursor: pointer;
+  color: var(--accent-blue-color);
+  width: fit-content;
+  position: relative;
+}
+.table-card__link_type_empty {
+  color: var(--accent-grey-color);
+}
+.table-card__link_type_active {
+  font-weight: bold;
+}
+.table-card__link_type_active::after {
+  content: '';
+  position: absolute;
+  right: -16px;
+  top: 2px;
+  background-image: url('../../../images/arrow-blue.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  transition: all .3s ease-in-out;
+  transform: rotate(270deg);
+}
+.table-card__menu {
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+}

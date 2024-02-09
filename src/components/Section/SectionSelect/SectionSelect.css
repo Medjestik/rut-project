@@ -1,0 +1,114 @@
+.section__select {
+  margin: 0px;
+  min-width: 260px;
+  background: var(--gradient-blue-color);
+  border-radius: var(--border-radius);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.section__select_status_open {
+  border-radius: 8px 8px 0px 0px;
+}
+.section__select:hover {
+  cursor: pointer;
+}
+.section__select-main {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 8px 20px;
+  box-sizing: border-box;
+}
+.section__select-text {
+  margin: 0px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--main-white-color);
+}
+.section__select-arrow {
+  margin: 0px 0px 0px 10px;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../../images/arrow-white.svg');
+  background-position: center;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+  transition: all .3s ease-in-out;
+}
+.section__select-arrow_status_open {
+  transform: rotate(180deg);
+}
+.section__select-options-container {
+  width: 100%;
+  margin: 0px;
+  background: var(--gradient-blue-color);
+  border-radius: 0px 0px 8px 8px;
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  transition: all .3s ease-in-out;
+  z-index: 100;
+  box-shadow: 8px 12px -8px rgb(166 166 166 / 90%);
+  box-sizing: border-box;
+}
+.section__select-options-container_status_open {
+  display: block;
+}
+.section__select-options-list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+.section__select-options-item {
+  margin: 0px;
+  padding: 11px 20px;
+  box-sizing: border-box;
+}
+.section__select-options-text {
+  margin: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: var( --main-white-color);
+}
+.section__select-options-item:hover .section__select-options-text {
+  font-weight: bold;
+}
+@media all and (max-width: 833px) {
+  .section__select {
+    min-width: 140px;
+    min-height: 32px;
+  }
+  .section__select-main {
+    padding: 4px 8px 4px 12px;
+  }
+  .section__select-text {
+    margin: 0px 12px 0px 0px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .section__select-arrow {
+    width: 16px;
+    height: 16px;
+    background-size: 16px;
+  }
+  .section__select-options-container {
+    top: 32px;
+  }
+  .section__select-options-item {
+    margin: 0px;
+    padding: 8px 12px;
+  }
+  .section__select-options-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

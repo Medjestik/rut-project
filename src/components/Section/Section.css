@@ -1,0 +1,198 @@
+.section__page {
+  margin: 0px;
+  width: 100%;
+}
+.section__page_type_page {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+.section__page-list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+.section__page-item {
+  width: min-content;
+  min-width: 164px;
+  height: 60px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  background: var(--gradient-blue-color);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+.section__page-item_type_small {
+  width: min-content;
+  min-width: 164px;
+}
+.section__page-item_type_medium {
+  width: min-content;
+  min-width: 256px;
+}
+.section__page-item_type_large {
+  width: 100%;
+  min-width: 100%;
+}
+.section__page-title {
+  margin: 0px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--main-white-color);
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.section__page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: -20px 0px 0px 0px;
+  padding: 36px;
+  background: var(--main-white-color);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  min-height: max-content;
+}
+.section__page-container_type_content {
+  min-height: max-content;
+}
+.section__page-container_type_page {
+  flex-grow: 2;
+}
+.section__header {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.section__header_direction_column {
+  flex-direction: column;
+}
+.section__header-item {
+  margin: 0px 20px 0px 0px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.section__header-item:last-of-type {
+  margin: 0px;
+}
+.section__header-item_margin_top {
+  margin: 8px 0px 0px 0px;
+}
+.section__header-item_type_content {
+  width: max-content;
+  flex-shrink: 0;
+}
+.section__header-caption {
+  margin: 0px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  min-height: 18px;
+  color: var(--main-black-color);
+}
+.section__header-caption_margin_bottom {
+  margin: 0px 0px 4px 0px;
+}
+.section__header-btn {
+  margin: 0px;
+  position: relative;
+  max-width: 216px;
+  width: 100%;
+  padding: 11px;
+  background: var(--gradient-blue-color);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--main-white-color);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all .3s ease-in-out;
+}
+.section__header-btn:hover  {
+  cursor: pointer;
+  user-select: auto;
+  pointer-events: all;
+  opacity: .8;
+  box-shadow: 0px 8px 12px -8px rgba(0, 55, 196, 0.9);
+}
+.section__header-btn_type_full {
+  max-width: 100%;
+}
+.section__header-btn_type_fix {
+  width: 216px;
+}
+.section__header-btn_type_block {
+  background: var(--slider-color);
+  box-shadow: none;
+  user-select: none;
+  pointer-events: none;
+}
+.section__header-title-container {
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+}
+.section__header-title {
+  margin: 0px;
+  color: var(--main-black-color);
+  font-style: normal;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+}
+.section__header-title_margin_top {
+  margin-top: 12px;
+}
+.section__header-title_margin_bottom {
+  margin-bottom: 12px;
+}
+.section__header-title_size_14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+
+@media all and (max-width: 833px) {
+  .section__page-container {
+    margin: -28px 0px 0px 0px;
+    padding: 20px;
+  }
+  .section__page-item {
+    padding: 8px 20px;
+  }
+  .section__page-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .section__header {
+    margin: 0px 0px 16px 0px;
+  }
+  .section__header-item {
+    margin: 0px 12px 0px 0px;
+  }
+  .section__header-item_margin_top {
+    margin: 8px 0px 0px 0px;
+  }
+  .section__header-item:last-of-type {
+    margin: 8px 0px 0px 0px;
+  }
+  .section__header-btn {
+    padding: 8px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,96 @@
+.section__tabs {
+  margin: 0px;
+  width: 100%;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+.section__tabs-list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+.section__tabs-item {
+  margin: 0px 20px 0px 0px;
+  width: max-content;
+  min-width: 164px;
+  height: 60px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  background: var(--gradient-blue-color);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+}
+.section__tabs-item:hover {
+  cursor: pointer;
+}
+.section__tabs-item_type_active {
+  background: var(--main-white-color);
+}
+.section__tabs-item_type_small {
+  width: max-content;
+  min-width: 164px;
+}
+.section__tabs-item_type_medium {
+  width: max-content;
+  min-width: 256px;
+}
+.section__tabs-item_type_large {
+  width: 100%;
+  min-width: 100%;
+}
+.section__tabs-title {
+  margin: 0px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--main-white-color);
+}
+.section__tabs-item_type_active .section__tabs-title {
+  color: var(--main-black-color);
+}
+.section__tabs-container {
+  width: 100%;
+  margin: -20px 0px 0px 0px;
+  min-height: 80px;
+  padding: 36px;
+  background: var(--main-white-color);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+@media all and (max-width: 833px) {
+  .section__tabs-item {
+    min-width: max-content;
+    padding: 8px 20px;
+    margin: 0px 12px 0px 0px;
+  }
+  .section__tabs-item_type_small {
+    min-width: max-content;
+  }
+  .section__tabs-item_type_medium {
+    min-width: max-content;
+  }
+  .section__tabs-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .section__tabs-container {
+    width: 100%;
+    margin: -28px 0px 0px 0px;
+    min-height: 80px;
+    padding: 20px;
+    background: var(--main-white-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+  }
+}

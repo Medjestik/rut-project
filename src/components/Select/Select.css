@@ -1,0 +1,120 @@
+.select {
+  margin: 0px;
+  min-width: 164px;
+  min-height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+  box-sizing: border-box;
+  background: var(--main-white-color);
+  border-radius: var(--border-radius);
+}
+.select_status_open {
+  border-radius: 8px 8px 0px 0px;
+}
+.select:hover {
+  cursor: pointer;
+}
+.select__main {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 8px 20px;
+  box-sizing: border-box;
+}
+.select__text {
+  margin: 0px 20px 0px 0px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--main-black-color);
+}
+.select__arrow {
+  margin: 0px;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../images/arrow.svg');
+  background-position: center;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+  transition: all .3s ease-in-out;
+}
+.select__arrow_status_open {
+  transform: rotate(180deg);
+}
+.select__options-container {
+  width: 100%;
+  margin: 0px;
+  background: var(--main-white-color);
+  border-radius: 0px 0px 8px 8px;
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  transition: all .3s ease-in-out;
+  z-index: 100;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 12px -8px rgb(166 166 166 / 90%);
+}
+.select__options-container_status_open {
+  display: block;
+}
+.select__options-list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+.select__options-item {
+  margin: 0px 20px;
+  padding: 11px 0px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--slider-color);
+}
+.select__options-item:last-of-type {
+  border-bottom: none;
+}
+.select__options-text {
+  margin: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--main-black-color);
+}
+.select__options-item:hover .select__options-text {
+  color: var(--accent-blue-color);
+}
+@media all and (max-width: 833px) {
+  .select {
+    min-height: 32px;
+  }
+  .select__main {
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 8px 7px 20px;
+    box-sizing: border-box;
+  }
+  .select__text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .select__arrow {
+    margin: 0px;
+    width: 18px;
+    height: 18px;
+    background-size: 18px;
+  }
+  .select__options-container {
+    top: 32px;
+    left: 0px;
+  }
+}

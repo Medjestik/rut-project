@@ -1,0 +1,41 @@
+.header-mobile {
+  margin: 0px;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  min-height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--main-white-color);
+  z-index: 10;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--slider-color);
+}
+.header-mobile__title {
+  margin: 0px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--main-black-color);
+}
+.header-mobile__btn {
+  width: 24px;
+  height: 24px;
+  background: inherit;
+  border: none;
+  transition: all .3s ease-in-out;
+}
+.header-mobile__btn_type_menu {
+  background-image: url('../../../images/mobile-menu.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.header-mobile__btn_type_menu:hover  {
+  cursor: pointer;
+  opacity: .7;
+}
