@@ -1,7 +1,7 @@
 import React from 'react';
 import Popup from '../Popup.js';
 
-function AddUserPopup({ isOpen, onClose, popupName, onConfirm, isLoadingRequest, isShowRequestError }) {
+function EditUserPopup({ isOpen, onClose, popupName, currentUser, onConfirm, isLoadingRequest, isShowRequestError }) {
 
   const [name, setName] = React.useState('');
   const [nameError, setNameError] = React.useState({ isShow: false, text: '' });
@@ -12,7 +12,7 @@ function AddUserPopup({ isOpen, onClose, popupName, onConfirm, isLoadingRequest,
   function handleSubmit(e) {
     e.preventDefault();
     const data = {
-      name: name, group: group, phone: '', email: '',  
+      name: name, group: group, phone: '', email: '', id: currentUser.id,
     }
     onConfirm(data);
   }
@@ -40,10 +40,10 @@ function AddUserPopup({ isOpen, onClose, popupName, onConfirm, isLoadingRequest,
   }, [name]);
 
   React.useEffect(() => {
-    setName('');
+    setName(currentUser.fullname);
     setNameError({ isShow: false, text: '' });
-    setGroup('');
-  }, [isOpen]);
+    setGroup(currentUser.group_name);
+  }, [currentUser, isOpen]);
 
   return (
     <Popup
@@ -98,9 +98,9 @@ function AddUserPopup({ isOpen, onClose, popupName, onConfirm, isLoadingRequest,
 					<button className='popup__btn-cancel' type='button' onClick={() => onClose()}>Отменить</button>
 					{
 						isLoadingRequest ? 
-						<button className='popup__btn-save popup__btn-save_type_loading' disabled type='button'>Добавление..</button>
+						<button className='popup__btn-save popup__btn-save_type_loading' disabled type='button'>Сохранение..</button>
 						:
-						<button className={`popup__btn-save ${isBlockSubmitButton ? 'popup__btn-save_type_block' : ''}`} type='submit'>Добавить</button>
+						<button className={`popup__btn-save ${isBlockSubmitButton ? 'popup__btn-save_type_block' : ''}`} type='submit'>Сохранить</button>
 					}
 				</div>
 				<span className={`popup__input-error ${isShowRequestError.isShow && 'popup__input-error_status_show'}`}>{isShowRequestError.text}</span>
@@ -110,4 +110,4 @@ function AddUserPopup({ isOpen, onClose, popupName, onConfirm, isLoadingRequest,
   )
 }
 
-export default AddUserPopup; 
+export default EditUserPopup; 

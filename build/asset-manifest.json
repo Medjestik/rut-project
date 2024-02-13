@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f9c38c32.css",
-    "main.js": "/static/js/main.500eb9ce.js",
+    "main.css": "/static/css/main.801dbd87.css",
+    "main.js": "/static/js/main.4ac80bc9.js",
     "static/js/787.9e52edbe.chunk.js": "/static/js/787.9e52edbe.chunk.js",
     "static/media/logo-rut-color.png": "/static/media/logo-rut-color.65493b272810e079438e.png",
     "static/media/Robotomediumitalic.ttf": "/static/media/Robotomediumitalic.35abcf5eb54b0c398e52.ttf",
@@ -63,18 +63,18 @@
     "static/media/table.svg": "/static/media/table.6d9cc20faaa4b40b097b.svg",
     "static/media/upload-hover.svg": "/static/media/upload-hover.0bae0825444c085f5dff.svg",
     "static/media/upload-color.svg": "/static/media/upload-color.5818419372c939729097.svg",
+    "index.html": "/index.html",
     "static/media/password-show-color.svg": "/static/media/password-show-color.ab6857a6002b4e8aa41c.svg",
     "static/media/password-show.svg": "/static/media/password-show.2c7725f494e0c5bf2e41.svg",
-    "index.html": "/index.html",
     "static/media/search-color.svg": "/static/media/search-color.b946f3c9dc3cfce2dd55.svg",
     "static/media/arrow.svg": "/static/media/arrow.55a4ec4915bbcdabc744.svg",
     "static/media/arrow-blue.svg": "/static/media/arrow-blue.d97550c6523356d4c133.svg",
-    "main.f9c38c32.css.map": "/static/css/main.f9c38c32.css.map",
-    "main.500eb9ce.js.map": "/static/js/main.500eb9ce.js.map",
+    "main.801dbd87.css.map": "/static/css/main.801dbd87.css.map",
+    "main.4ac80bc9.js.map": "/static/js/main.4ac80bc9.js.map",
     "787.9e52edbe.chunk.js.map": "/static/js/787.9e52edbe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f9c38c32.css",
-    "static/js/main.500eb9ce.js"
+    "static/css/main.801dbd87.css",
+    "static/js/main.4ac80bc9.js"
   ]
 }

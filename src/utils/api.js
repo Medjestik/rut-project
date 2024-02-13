@@ -46,7 +46,7 @@ export const addProject = ({ teamId, projectId }) => {
     method: 'POST', 
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ team: teamId, project: projectId })
   })
@@ -58,9 +58,31 @@ export const addMember = ({ teamId, data }) => {
     method: 'POST', 
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ fullname: data.name, group_name: data.group, phone: data.phone, email: data.email })
   })
   .then(res => handleResponse(res));
+};
+
+export const editMember = ({ teamId, data }) => {
+  return fetch(`${BASE_URL}/teams/${teamId}/members/${data.id}/`, {
+    method: 'PATCH', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ fullname: data.name, group_name: data.group, phone: data.phone, email: data.email })
+  })
+  .then(res => handleResponse(res));
+};
+
+export const removeMember = ({ teamId, data }) => {
+  return fetch(`${BASE_URL}/teams/${teamId}/members/${data.id}/`, {
+    method: 'DELETE', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
 };

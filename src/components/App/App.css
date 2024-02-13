@@ -746,6 +746,7 @@ input[type=number] {
   line-height: 18px;
   text-align: left;
   color: var(--main-black-color);
+  transition: all .3s ease-in-out;
 }
 .data__text_font_bold {
   margin: 0px 8px 0px 0px;
@@ -754,13 +755,25 @@ input[type=number] {
 .data__text_type_empty {
   color: var(--accent-grey-color);
 }
-.data__text_font_active {
-  margin: 0px 8px 0px 0px;
+.data__text_font_active:hover {
+  cursor: pointer;
   color: var(--accent-blue-color);
-  font-weight: bold;
 }
 .data__text_margin_top {
   margin-top: 20px;
+}
+.data__text_type_remove {
+  margin: 0px 0px 0px 12px;
+  color: var(--accent-orange-color);
+  display: none;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.data__text_type_remove:hover {
+  opacity: .7;
+}
+.data__item:hover .data__text_type_remove {
+  display: block;
 }
 .data__area {
   resize: none;

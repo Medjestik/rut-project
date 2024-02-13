@@ -10,6 +10,8 @@ import PopupSelect from '../Popup/PopupSelect/PopupSelect.js';
 import Preloader from '../Preloader/Preloader.js';
 import DetailPopup from '../Popup/DetailPopup/DetailPopup.js';
 import AddUserPopup from '../Popup/AddUserPopup/AddUserPopup.js';
+import EditUserPopup from '../Popup/EditUserPopup/EditUserPopup.js';
+import ConfirmRemovePopup from '../Popup/ConfirmRemovePopup/ConfirmRemovePopup.js';
 
 function Project({ windowWidth }) { 
 
@@ -18,12 +20,15 @@ function Project({ windowWidth }) {
   const [currentTeam, setCurrentTeam] = React.useState({});
   const [searchedProjects, setSearchedProjects] = React.useState([]);
   const [currentProject, setCurrentProject] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
 
   const [projectTags, setProjectTags] = React.useState([]);
   const [currentTag, setCurrentTag] = React.useState({});
 
   const [isShowDetailPopup, setIsShowDetailPopup] = React.useState(false);
-  const [isShowAddUserPopup, setIsShowAddUserPopup] = React.useState(false);  
+  const [isShowAddUserPopup, setIsShowAddUserPopup] = React.useState(false);
+  const [isShowEditUserPopup, setIsShowEditUserPopup] = React.useState(false);
+  const [isShowRemoveUserPopup, setIsShowRemoveUserPopup] = React.useState(false);
   
   const [isLoadingRequest, setIsLoadingRequest] = React.useState(false);
   const [isShowRequestError, setIsShowRequestError] = React.useState({ isShow: false, text: '', });
@@ -52,6 +57,38 @@ function Project({ windowWidth }) {
     api.addMember({ teamId: params.teamId, data: data })
     .then((res) => {
       setCurrentTeam({...currentTeam, members: [...currentTeam.members, res]});
+      closePopup();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      setIsLoadingRequest(false);
+    })
+  }
+
+  function handleEditUser(user) {
+    setIsLoadingRequest(true);
+    api.editMember({ teamId: params.teamId, data: user })
+    .then((res) => {
+      const index = currentTeam.members.indexOf(currentTeam.members.find((elem) => (elem.id === res.id)));
+      setCurrentTeam({...currentTeam, members: [...currentTeam.members.slice(0, index), res, ...currentTeam.members.slice(index + 1)]});
+      closePopup();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      setIsLoadingRequest(false);
+    })
+  }
+
+  function handleRemoveUser(user) {
+    setIsLoadingRequest(true);
+    api.removeMember({ teamId: params.teamId, data: user })
+    .then(() => {
+      const newUsers = currentTeam.members.filter((elem) => elem.id !== user.id);
+      setCurrentTeam({...currentTeam, members: newUsers});
       closePopup();
     })
     .catch((err) => {
@@ -111,21 +148,37 @@ function Project({ windowWidth }) {
     setIsShowDetailPopup(true);
   }
 
-  function showAddUserPopup(elem) {
-    setCurrentProject(elem);
+  function showAddUserPopup() {
     setIsShowAddUserPopup(true);
+  }
+
+  function showEditUserPopup(elem) {
+    setCurrentUser(elem);
+    setIsShowEditUserPopup(true);
+  }
+
+  function showRemoveUserPopup(elem) {
+    setCurrentUser(elem);
+    setIsShowRemoveUserPopup(true);
   }
 
   function closePopup() {
     setIsShowDetailPopup(false);
     setIsShowAddUserPopup(false);
+    setIsShowEditUserPopup(false);
+    setIsShowRemoveUserPopup(false);
   }
 
   React.useEffect(() => {
     getInitialData();
 
     return(() => {
+      setProjectTags([]);
+      setCurrentTag({});
       setCurrentTeam({});
+      setCurrentUser({});
+      setCurrentProject({});
+      setSearchedProjects([]);
     })
     // eslint-disable-next-line
   }, []);
@@ -160,7 +213,13 @@ function Project({ windowWidth }) {
                 <ul className='data__list data__list_margin_top'>
                   {
                     currentTeam.members.map((elem, i) => (
-                      <li key={i} className='data__item'><p className='data__text'>{i + 1}. {elem.fullname}</p></li>
+                      <li 
+                      key={i} 
+                      className='data__item'
+                      >
+                        <p onClick={() => showEditUserPopup(elem)} className='data__text data__text_font_active'>{i + 1}. {elem.fullname}</p>
+                        <span onClick={() => showRemoveUserPopup(elem)} className='data__text data__text_type_remove'>Удалить</span>
+                      </li>
                     ))
                   }
                 </ul>
@@ -212,6 +271,30 @@ function Project({ windowWidth }) {
         onClose={closePopup} 
         popupName={'add-user'} 
         onConfirm={handleAddUser}
+        isLoadingRequest={isLoadingRequest} 
+        isShowRequestError={isShowRequestError}
+      />
+    }
+    {
+      isShowEditUserPopup &&
+      <EditUserPopup 
+        isOpen={isShowEditUserPopup}
+        onClose={closePopup} 
+        popupName={'edit-user'} 
+        onConfirm={handleEditUser}
+        currentUser={currentUser}
+        isLoadingRequest={isLoadingRequest} 
+        isShowRequestError={isShowRequestError}
+      />
+    }
+    {
+      isShowRemoveUserPopup &&
+      <ConfirmRemovePopup
+        isOpen={isShowRemoveUserPopup}
+        onClose={closePopup} 
+        popupName={'remove-user'} 
+        onConfirm={handleRemoveUser}
+        data={currentUser}
         isLoadingRequest={isLoadingRequest} 
         isShowRequestError={isShowRequestError}
       />
