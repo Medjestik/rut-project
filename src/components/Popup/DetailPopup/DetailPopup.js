@@ -4,14 +4,7 @@ import './DetailPopup.css';
 import { getProjectDetail } from '../../../utils/api.js';
 import PreloaderPopup from '../../Preloader/PreloaderPopup/PreloaderPopup.js';
 
-function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoadingRequest }) {
-
-  const isShowRequestError = {
-    isShow: true,
-    text: 'Запись на проекты откроется после 15.02',
-  }
-
-  const isBlockSubmitButton = true;
+function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoadingRequest, isShowRequestError }) {
 
 	const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [currentData, setCurrentData] = React.useState({});
@@ -111,7 +104,7 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
 						isLoadingRequest ? 
 						<button className='popup__btn-save popup__btn-save_type_loading' disabled type='button'>Сохранение..</button>
 						:
-						<button className={`popup__btn-save ${isBlockSubmitButton ? 'popup__btn-save_type_block' : ''}`} disabled type='button'>Выбрать</button>
+						<button className={`popup__btn-save`} type='submit'>Выбрать</button>
 					}
 				</div>
 				<span className={`popup__input-error ${isShowRequestError.isShow && 'popup__input-error_status_show'}`}>{isShowRequestError.text}</span>

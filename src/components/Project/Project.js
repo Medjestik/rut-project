@@ -100,6 +100,7 @@ function Project({ windowWidth }) {
   }
 
   function handleAddProject(project) {
+    setIsShowRequestError({ isShow: false, text: '', });
     setIsLoadingRequest(true);
     api.addProject({ teamId: params.teamId, projectId: project.id })
     .then(() => {
@@ -119,6 +120,8 @@ function Project({ windowWidth }) {
     })
     .catch((err) => {
       console.log(err);
+      setIsShowRequestError({ isShow: true, text: 'Достигнуто максимальное количество команд!', });
+      setIsLoadingRequest(false);
     })
   }
 
@@ -163,6 +166,7 @@ function Project({ windowWidth }) {
   }
 
   function closePopup() {
+    setIsShowRequestError({ isShow: false, text: '', });
     setIsShowDetailPopup(false);
     setIsShowAddUserPopup(false);
     setIsShowEditUserPopup(false);
@@ -261,7 +265,8 @@ function Project({ windowWidth }) {
         popupName={'project-detail'} 
         onConfirm={handleAddProject} 
         project={currentProject} 
-        isLoadingRequest={isLoadingRequest} 
+        isLoadingRequest={isLoadingRequest}
+        isShowRequestError={isShowRequestError}
       />
     }
     {
