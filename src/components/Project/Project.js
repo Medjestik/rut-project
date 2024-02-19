@@ -266,7 +266,6 @@ function Project({ windowWidth }) {
         onConfirm={handleAddProject} 
         project={currentProject} 
         isLoadingRequest={isLoadingRequest}
-        isShowRequestError={isShowRequestError}
       />
     }
     {
