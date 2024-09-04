@@ -60,8 +60,8 @@ function ProjectList({ currentTeam, searchedPrograms, onShow }) {
               <div className='project-list__item-info'>
                 <h4 className='project-list__item-title'>{elem.name || ''}</h4>
                 <p className='project-list__item-text'>{elem.target || ''}</p>
-                <p className='data__text'><span className='data__text_font_bold'>Партнер проекта:</span>{elem.customer.shortname}</p>
-                <p className='data__text'><span className='data__text_font_bold'>Количество команд:</span>{elem.teams_count}/{elem.max_teams}</p>
+                <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Партнер проекта:</span>{elem.customer.shortname}</p>
+                <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Количество команд:</span>{elem.teams_count}/{elem.max_teams}</p>
                 {
                   renderButton(elem)
                 }

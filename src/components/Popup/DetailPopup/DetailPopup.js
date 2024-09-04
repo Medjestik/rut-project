@@ -65,8 +65,8 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
 				:
 				<>
 				<h2 className='popup__title popup__title_margin_bottom'>{currentData.name}</h2>
-        <p className='data__text'><span className='data__text_font_bold'>Партнер проекта:</span>{currentData.customer.shortname}</p>
-        <p className='data__text'><span className='data__text_font_bold'>Количество команд:</span>{currentData.teams_count}/{currentData.max_teams}</p>
+        <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Партнер проекта:</span>{currentData.customer.shortname}</p>
+        <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Количество команд:</span>{currentData.teams_count}/{currentData.max_teams}</p>
 
         <div className='popup__field'>
           <h4 className='popup__input-caption'>Носитель проблемы:</h4>
@@ -107,12 +107,20 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
 
 				<div className='popup__btn-container'>
 					<button className='popup__btn-cancel' type='button' onClick={() => onClose()}>Отменить</button>
-					{
-						isLoadingRequest ? 
-						<button className='popup__btn-save popup__btn-save_type_loading' disabled type='button'>Сохранение..</button>
-						:
-						<button className={`popup__btn-save ${isBlockSubmitButton ? 'popup__btn-save_type_block' : ''}`} disabled type='button'>Выбрать</button>
-					}
+          {
+            isBlockSubmitButton
+            ?
+            <button className='popup__btn-save popup__btn-save_type_block' disabled type='button'>Выбрать</button>
+            :
+            <>
+            {
+              isLoadingRequest ? 
+              <button className='popup__btn-save popup__btn-save_type_loading' disabled type='button'>Сохранение..</button>
+              :
+              <button className={`popup__btn-save ${isBlockSubmitButton ? 'popup__btn-save_type_block' : ''}`} type='submit'>Выбрать</button>
+            }
+            </>
+          }
 				</div>
 				<span className={`popup__input-error ${isShowRequestError.isShow && 'popup__input-error_status_show'}`}>{isShowRequestError.text}</span>
 				</>

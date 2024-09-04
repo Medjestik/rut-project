@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.801dbd87.css",
-    "main.js": "/static/js/main.c9bedee1.js",
+    "main.css": "/static/css/main.3b683e7f.css",
+    "main.js": "/static/js/main.603d19c1.js",
     "static/js/787.9e52edbe.chunk.js": "/static/js/787.9e52edbe.chunk.js",
     "static/media/logo-rut-color.png": "/static/media/logo-rut-color.65493b272810e079438e.png",
     "static/media/Robotomediumitalic.ttf": "/static/media/Robotomediumitalic.35abcf5eb54b0c398e52.ttf",
@@ -40,6 +40,7 @@
     "static/media/Robotolight.woff2": "/static/media/Robotolight.95ff440a51f48ad36a98.woff2",
     "static/media/Roboto.woff2": "/static/media/Roboto.806e04d8241d87f99a68.woff2",
     "static/media/Robotothin.woff2": "/static/media/Robotothin.30581100ea069d04b86a.woff2",
+    "static/media/user.png": "/static/media/user.8d49e377c7c342895ec2.png",
     "static/media/users.svg": "/static/media/users.055ff38ff8536a70a2b9.svg",
     "static/media/announcement.svg": "/static/media/announcement.6f04dbce9458a5f171d8.svg",
     "static/media/edit.svg": "/static/media/edit.52969f0b07243baa6a1d.svg",
@@ -55,6 +56,7 @@
     "static/media/expand.svg": "/static/media/expand.58cd64dd4e22043c9324.svg",
     "static/media/search.svg": "/static/media/search.5d6d0d5934a4fc6fec39.svg",
     "static/media/collapse.svg": "/static/media/collapse.73fd7abdaf53a06ea947.svg",
+    "index.html": "/index.html",
     "static/media/open.svg": "/static/media/open.281e397191c23b487738.svg",
     "static/media/plus.svg": "/static/media/plus.c8e25b81c5221dffcf05.svg",
     "static/media/password-hide-color.svg": "/static/media/password-hide-color.fc56a60e78838c6b83c5.svg",
@@ -63,18 +65,18 @@
     "static/media/table.svg": "/static/media/table.6d9cc20faaa4b40b097b.svg",
     "static/media/upload-hover.svg": "/static/media/upload-hover.0bae0825444c085f5dff.svg",
     "static/media/upload-color.svg": "/static/media/upload-color.5818419372c939729097.svg",
-    "index.html": "/index.html",
     "static/media/password-show-color.svg": "/static/media/password-show-color.ab6857a6002b4e8aa41c.svg",
     "static/media/password-show.svg": "/static/media/password-show.2c7725f494e0c5bf2e41.svg",
+    "static/media/rating-star-color.svg": "/static/media/rating-star-color.c3fb6e1694956df0210f.svg",
     "static/media/search-color.svg": "/static/media/search-color.b946f3c9dc3cfce2dd55.svg",
     "static/media/arrow.svg": "/static/media/arrow.55a4ec4915bbcdabc744.svg",
     "static/media/arrow-blue.svg": "/static/media/arrow-blue.d97550c6523356d4c133.svg",
-    "main.801dbd87.css.map": "/static/css/main.801dbd87.css.map",
-    "main.c9bedee1.js.map": "/static/js/main.c9bedee1.js.map",
+    "main.3b683e7f.css.map": "/static/css/main.3b683e7f.css.map",
+    "main.603d19c1.js.map": "/static/js/main.603d19c1.js.map",
     "787.9e52edbe.chunk.js.map": "/static/js/787.9e52edbe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.801dbd87.css",
-    "static/js/main.c9bedee1.js"
+    "static/css/main.3b683e7f.css",
+    "static/js/main.603d19c1.js"
   ]
 }

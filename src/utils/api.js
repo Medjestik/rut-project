@@ -53,6 +53,19 @@ export const addProject = ({ teamId, projectId }) => {
   .then(res => handleResponse(res));
 };
 
+export const editData = ({ teamId, data }) => {
+  return fetch(`${BASE_URL}/teams/${teamId}/`, {
+    method: 'PATCH', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: data.name, group_name: data.group, captain_fullname: data.captain })
+  })
+  .then(res => handleResponse(res));
+};
+
+
 export const addMember = ({ teamId, data }) => {
   return fetch(`${BASE_URL}/teams/${teamId}/members/`, {
     method: 'POST', 

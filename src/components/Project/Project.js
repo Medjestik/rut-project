@@ -9,6 +9,7 @@ import Search from '../Search/Search.js';
 import PopupSelect from '../Popup/PopupSelect/PopupSelect.js';
 import Preloader from '../Preloader/Preloader.js';
 import DetailPopup from '../Popup/DetailPopup/DetailPopup.js';
+import EditDataPopup from '../Popup/EditDataPopup/EditDataPopup.js';
 import AddUserPopup from '../Popup/AddUserPopup/AddUserPopup.js';
 import EditUserPopup from '../Popup/EditUserPopup/EditUserPopup.js';
 import ConfirmRemovePopup from '../Popup/ConfirmRemovePopup/ConfirmRemovePopup.js';
@@ -26,6 +27,7 @@ function Project({ windowWidth }) {
   const [currentTag, setCurrentTag] = React.useState({});
 
   const [isShowDetailPopup, setIsShowDetailPopup] = React.useState(false);
+  const [isShowEditDataPopup, setIsShowEditDataPopup] = React.useState(false);
   const [isShowAddUserPopup, setIsShowAddUserPopup] = React.useState(false);
   const [isShowEditUserPopup, setIsShowEditUserPopup] = React.useState(false);
   const [isShowRemoveUserPopup, setIsShowRemoveUserPopup] = React.useState(false);
@@ -50,6 +52,21 @@ function Project({ windowWidth }) {
   function handleSearchProject(data) {
     setSearchedProjects(data);
     setCurrentTag({id: 'empty', name: 'Выберите категорию..'});
+  }
+
+  function handleEditData(data) {
+    setIsLoadingRequest(true);
+    api.editData({ teamId: params.teamId, data: data })
+    .then((res) => {
+      setCurrentTeam(res);
+      closePopup();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      setIsLoadingRequest(false);
+    })
   }
 
   function handleAddUser(data) {
@@ -126,6 +143,7 @@ function Project({ windowWidth }) {
   }
 
   function getInitialData() {
+    setIsLoadingData(true);
     Promise.all([
       api.getData({ teamId: params.teamId }),
       api.getTags(),
@@ -136,19 +154,23 @@ function Project({ windowWidth }) {
       setSearchedProjects(data.possible_projects);
       setProjectTags([...tags, {id: 'empty', name: 'Выберите категорию..'}]);
       setCurrentTag({id: 'empty', name: 'Выберите категорию..'});
-      setIsLoadingData(false);
+      
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      
+      setIsLoadingData(false);
     })
   }
 
   function showDetailPopup(elem) {
     setCurrentProject(elem);
     setIsShowDetailPopup(true);
+  }
+
+  function showEditDataPopup() {
+    setIsShowEditDataPopup(true);
   }
 
   function showAddUserPopup() {
@@ -168,6 +190,7 @@ function Project({ windowWidth }) {
   function closePopup() {
     setIsShowRequestError({ isShow: false, text: '', });
     setIsShowDetailPopup(false);
+    setIsShowEditDataPopup(false);
     setIsShowAddUserPopup(false);
     setIsShowEditUserPopup(false);
     setIsShowRemoveUserPopup(false);
@@ -190,7 +213,7 @@ function Project({ windowWidth }) {
   return (
     <>
     {
-      isLoadingData ?
+      isLoadingData && currentTeam ?
       <Preloader />
       :
       <div className='wrapper'>
@@ -198,42 +221,64 @@ function Project({ windowWidth }) {
           <div className='container'>
             <div className='project__form'>
               <img className='project__logo' src={logo} alt='лого'></img>
-              <h1 className='project__form-title'>Проектная деятельность</h1>
-              <p className='project__form-text'>Выберите проект для своей команды.</p>
-              <h2 className='project__title'>Команда - «{currentTeam.name}»</h2>
-              {
-                currentTeam.participation.length > 0 
-                ?
-                <p className='data__text data__text_margin_top'><span className='data__text_font_bold'>Выбранный проект:</span>{currentTeam.participation[0].project.name}</p>
-                :
-                <span className='data__text data__text_type_empty data__text_margin_top'>Проект еще не выбран!</span>
-              }
-              <p className='data__text data__text_margin_top'><span className='data__text_font_bold'>Капитан команды:</span>{currentTeam.captain_fullname}</p>
-              <p className='data__text data__text_font_bold data__text_margin_top'>Участники команды:</p>
-              
-              {
-                currentTeam.members.length > 0
-                ?
-                <ul className='data__list data__list_margin_top'>
+
+              <h1 className='project__title'>Команда - «{currentTeam.name}»</h1>
+
+              <div className='data__line'>
+                <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Учебная группа:</span>{currentTeam.group_name || ''}</p>
+                <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Наставник:</span>{currentTeam.tutor_fullname || ''}</p>
+                <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Капитан:</span>{currentTeam.captain_fullname || ''}</p>
+                <button className='project__member-btn' type='button' onClick={showEditDataPopup}>Редактировать данные</button>
+              </div>
+
+              <div className='data__line'>
+                <span className='data__text_font_bold'>Выбранный проект</span>
+                <p className='data__text data__text_margin_top'>Выберите проект для своей команды.</p>
+                {
+                  currentTeam.participation && currentTeam.participation.length > 0 
+                  ?
+                  <p className='data__text data__text_margin_top'>
+                    <span className='data__text_font_bold data__text_margin_right'>Проект:</span>{currentTeam.participation[0].project.name}
+                  </p>
+                  :
+                  <span className='data__text data__text_type_empty data__text_margin_top'>Проект еще не выбран!</span>
+                }
+              </div>
+
+              <div className='data__line'>
+                <span className='data__text_font_bold'>Участники команды</span>
+                <p className='data__text data__text_margin_top'>Добавьте участников в вашу команду.</p>
+                <ul className='participant__list'>
+                  <li className='participant__item'>
+                    <div className='participant__img'></div>
+                    <h4 className='participant__name'>{currentTeam.captain_fullname || ''}</h4>
+                    <div className='participant__control'>
+                      <div className='participant__icon participant__icon-captain' />
+                    </div>
+                  </li>
                   {
+                    currentTeam.members &&
                     currentTeam.members.map((elem, i) => (
-                      <li 
-                      key={i} 
-                      className='data__item'
-                      >
-                        <p onClick={() => showEditUserPopup(elem)} className='data__text data__text_font_active'>{i + 1}. {elem.fullname}</p>
-                        <span onClick={() => showRemoveUserPopup(elem)} className='data__text data__text_type_remove'>Удалить</span>
+                      <li key={i} className='participant__item'>
+                        <div className='participant__img'></div>
+                        <h4 className='participant__name'>{elem.fullname}</h4>
+                        <div className='participant__control'>
+                          <div className='participant__icon participant__icon-edit participant__icon-active' onClick={() => showEditUserPopup(elem)} />
+                          <div className='participant__icon participant__icon-remove participant__icon-active' onClick={() => showRemoveUserPopup(elem)} />
+                        </div>
                       </li>
                     ))
                   }
                 </ul>
-                :
-                <span className='data__text data__text_type_empty'>Список пока пуст!</span>
-              }
-              <button className='project__member-btn' type='button' onClick={showAddUserPopup}>Добавить участника</button>
-
-              <p className='data__text data__text_font_bold data__text_margin_top'>Рекомендованное количество участников в команде от 4 до 7</p>
-
+                {
+                  currentTeam.members && currentTeam.members.length < 6 &&
+                  <button className='project__member-btn' type='button' onClick={showAddUserPopup}>Добавить участника</button>
+                }
+                {
+                  currentTeam.members && currentTeam.members.length < 3 &&
+                  <p className='data__text data__text_margin_top data__text_type_orange'>Рекомендованное количество участников в команде от 4 до 7!</p>
+                }
+              </div>
             </div>
             <div className='project__main'>
               {
@@ -265,7 +310,19 @@ function Project({ windowWidth }) {
         popupName={'project-detail'} 
         onConfirm={handleAddProject} 
         project={currentProject} 
-        isLoadingRequest={isLoadingRequest}
+        isLoadingRequest={isLoadingRequest} 
+      />
+    }
+    {
+      isShowEditDataPopup &&
+      <EditDataPopup
+        isOpen={isShowEditDataPopup}
+        onClose={closePopup} 
+        popupName={'edit-data'} 
+        data={currentTeam}
+        onConfirm={handleEditData}
+        isLoadingRequest={isLoadingRequest} 
+        isShowRequestError={isShowRequestError}
       />
     }
     {
