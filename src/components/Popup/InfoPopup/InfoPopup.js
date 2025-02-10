@@ -1,25 +1,16 @@
 import React from 'react';
 import Popup from '../Popup.js';
-import './DetailPopup.css';
+import './InfoPopup.css';
 import { getProjectDetail } from '../../../utils/api.js';
 import PreloaderPopup from '../../Preloader/PreloaderPopup/PreloaderPopup.js';
 
-function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoadingRequest }) {
-
-  const isShowRequestError = {
-    isShow: false,
-    text: 'Запись на проекты закрыта',
-  }
-
-  const isBlockSubmitButton = false;
+function InfoPopup({ isOpen, onClose, popupName, project }) {
 
 	const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [currentData, setCurrentData] = React.useState({});
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    onConfirm(project);
   }
 
 	function getDetail() {
@@ -106,23 +97,8 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
         </div>
 
 				<div className='popup__btn-container'>
-					<button className='popup__btn-cancel' type='button' onClick={() => onClose()}>Отменить</button>
-          {
-            isBlockSubmitButton
-            ?
-            <button className='popup__btn-save popup__btn-save_type_block' disabled type='button'>Выбрать</button>
-            :
-            <>
-            {
-              isLoadingRequest ? 
-              <button className='popup__btn-save popup__btn-save_type_loading' disabled type='button'>Сохранение..</button>
-              :
-              <button className={`popup__btn-save ${isBlockSubmitButton ? 'popup__btn-save_type_block' : ''}`} type='submit'>Выбрать</button>
-            }
-            </>
-          }
+					<button className='popup__btn-save' type='button' onClick={() => onClose()}>Назад</button>
 				</div>
-				<span className={`popup__input-error ${isShowRequestError.isShow && 'popup__input-error_status_show'}`}>{isShowRequestError.text}</span>
 				</>
 
 			}
@@ -130,4 +106,4 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
   )
 }
 
-export default DetailPopup; 
+export default InfoPopup;

@@ -13,6 +13,7 @@ import EditDataPopup from '../Popup/EditDataPopup/EditDataPopup.js';
 import AddUserPopup from '../Popup/AddUserPopup/AddUserPopup.js';
 import EditUserPopup from '../Popup/EditUserPopup/EditUserPopup.js';
 import ConfirmRemovePopup from '../Popup/ConfirmRemovePopup/ConfirmRemovePopup.js';
+import InfoPopup from '../Popup/InfoPopup/InfoPopup.js';
 
 function Project({ windowWidth }) { 
 
@@ -26,6 +27,7 @@ function Project({ windowWidth }) {
   const [projectTags, setProjectTags] = React.useState([]);
   const [currentTag, setCurrentTag] = React.useState({});
 
+  const [isShowInfoPopup, setIsShowInfoPopup] = React.useState(false);
   const [isShowDetailPopup, setIsShowDetailPopup] = React.useState(false);
   const [isShowEditDataPopup, setIsShowEditDataPopup] = React.useState(false);
   const [isShowAddUserPopup, setIsShowAddUserPopup] = React.useState(false);
@@ -169,6 +171,11 @@ function Project({ windowWidth }) {
     setIsShowDetailPopup(true);
   }
 
+  function showInfoPopup() {
+    setCurrentProject(currentTeam.participation[0].project);
+    setIsShowInfoPopup(true);
+  }
+
   function showEditDataPopup() {
     setIsShowEditDataPopup(true);
   }
@@ -194,6 +201,7 @@ function Project({ windowWidth }) {
     setIsShowAddUserPopup(false);
     setIsShowEditUserPopup(false);
     setIsShowRemoveUserPopup(false);
+    setIsShowInfoPopup(false);
   }
 
   React.useEffect(() => {
@@ -228,18 +236,21 @@ function Project({ windowWidth }) {
                 <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Учебная группа:</span>{currentTeam.group_name || ''}</p>
                 <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Наставник:</span>{currentTeam.tutor_fullname || ''}</p>
                 <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Капитан:</span>{currentTeam.captain_fullname || ''}</p>
+                <p className='data__text data__text_margin_top'><span className='data__text_font_bold data__text_margin_right'>Предыдущий проект:</span>{currentTeam.previous_project_name || ''}</p>
                 <button className='project__member-btn' type='button' onClick={showEditDataPopup}>Редактировать данные</button>
               </div>
 
               <div className='data__line'>
                 <span className='data__text_font_bold'>Выбранный проект</span>
-                <p className='data__text data__text_margin_top'>Выберите проект для своей команды.</p>
                 {
                   currentTeam.participation && currentTeam.participation.length > 0 
                   ?
+                  <>
                   <p className='data__text data__text_margin_top'>
                     <span className='data__text_font_bold data__text_margin_right'>Проект:</span>{currentTeam.participation[0].project.name}
                   </p>
+                  <button className='project__member-btn' type='button' onClick={showInfoPopup}>Информация о проекте</button>
+                  </>
                   :
                   <span className='data__text data__text_type_empty data__text_margin_top'>Проект еще не выбран!</span>
                 }
@@ -311,6 +322,15 @@ function Project({ windowWidth }) {
         onConfirm={handleAddProject} 
         project={currentProject} 
         isLoadingRequest={isLoadingRequest} 
+      />
+    }
+    {
+      isShowInfoPopup &&
+      <InfoPopup 
+        isOpen={isShowInfoPopup}
+        onClose={closePopup} 
+        popupName={'project-info'} 
+        project={currentProject} 
       />
     }
     {

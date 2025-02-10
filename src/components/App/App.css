@@ -4,9 +4,9 @@
   --main-white-color: #FFFFFF;
   --main-black-color: #262626;
   --accent-grey-color: #A6A6A6;
-  --accent-blue-color: #1153FC;
+  --accent-blue-color: #38A1FF;
   --accent-orange-color: #FF7B02;
-  --gradient-blue-color: linear-gradient(315deg, #1153FC 0%, #5581F1 84.37%);
+  --gradient-blue-color: linear-gradient(315deg, #5581F1 0%,#38A1FF 84.37%);
   --gradient-orange-color: linear-gradient(315deg, #FFCB53 0%, #FF7B02 74.48%);
   --slider-color: #D9D9D9;
   --border-radius: 16px;
