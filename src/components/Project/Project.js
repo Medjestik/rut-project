@@ -282,12 +282,12 @@ function Project({ windowWidth }) {
                   }
                 </ul>
                 {
-                  currentTeam.members && currentTeam.members.length < 6 &&
+                  currentTeam.members && currentTeam.members.length < 7 &&
                   <button className='project__member-btn' type='button' onClick={showAddUserPopup}>Добавить участника</button>
                 }
                 {
                   currentTeam.members && currentTeam.members.length < 3 &&
-                  <p className='data__text data__text_margin_top data__text_type_orange'>Рекомендованное количество участников в команде от 4 до 7!</p>
+                  <p className='data__text data__text_margin_top data__text_type_orange'>Рекомендованное количество участников в команде от 4 до 8!</p>
                 }
               </div>
             </div>

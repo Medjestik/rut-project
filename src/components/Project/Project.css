@@ -9,6 +9,7 @@
   padding: 12px 34px;
   width: 420px;
   height: calc(100vh - 24px);
+  overflow-y: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
