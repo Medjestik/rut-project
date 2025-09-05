@@ -287,7 +287,7 @@ function Project({ windowWidth }) {
                 }
                 {
                   currentTeam.members && currentTeam.members.length < 3 &&
-                  <p className='data__text data__text_margin_top data__text_type_orange'>Рекомендованное количество участников в команде от 4 до 8!</p>
+                  <p className='data__text data__text_margin_top data__text_type_orange'>Рекомендованное количество участников в команде от 4 до 7!</p>
                 }
               </div>
             </div>
