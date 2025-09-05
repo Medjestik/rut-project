@@ -67,7 +67,14 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
 				<h2 className='popup__title popup__title_margin_bottom'>{currentData.name}</h2>
         <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Партнер проекта:</span>{currentData.customer.shortname}</p>
         <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Количество команд:</span>{currentData.teams_count}/{currentData.max_teams}</p>
-
+        {
+          currentData?.tags[0]?.name === 'Конкурсный отбор'
+          &&
+          <div className='popup__field'>
+            <h4 className='popup__input-caption'>Конкурсный отбор:</h4>
+            <p className='detail__text'>Заказчик будет проводить отбор 3 команд. Не прошедшие отбор команды будут записываться на доступные к записи проекты.</p>
+          </div>
+        }
         <div className='popup__field'>
           <h4 className='popup__input-caption'>Носитель проблемы:</h4>
           <p

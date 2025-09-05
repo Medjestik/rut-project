@@ -51,7 +51,7 @@ function ProjectList({ currentTeam, searchedPrograms, onShow }) {
                   <ul className='project-list__item-tag-container'>
                     {
                       elem.tags.map((tag, i) => (
-                        <li key={i} className='project-list__item-tag'>#{tag.name}</li>
+                        <li key={i} className={`project-list__item-tag ${tag.name === 'Конкурсный отбор' ? 'project-list__item-tag_color_orange' : ''}`}>#{tag.name}</li>
                       ))
                     } 
                   </ul>

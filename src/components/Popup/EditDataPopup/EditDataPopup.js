@@ -74,7 +74,7 @@ function EditDataPopup({ isOpen, onClose, popupName, data, onConfirm, isLoadingR
     >
 			{
         <>
-				<h2 className='popup__title popup__title_margin_bottom'>Добавление участника</h2>
+				<h2 className='popup__title popup__title_margin_bottom'>Редактирование данных</h2>
 
         <div className='popup__field'>
           <h4 className='popup__input-caption'>Название команды:</h4>

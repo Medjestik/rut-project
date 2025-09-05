@@ -139,6 +139,9 @@
   user-select: none;
   background: var(--accent-blue-color);
 }
+.project-list__item-tag_color_orange {
+  background: var(--accent-orange-color);
+}
 .project-list__item-tag:last-of-type {
   margin: 0px;
 }
