@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.50239688.css",
-    "main.js": "/static/js/main.d9587ca6.js",
+    "main.js": "/static/js/main.6834cfb4.js",
     "static/js/787.9e52edbe.chunk.js": "/static/js/787.9e52edbe.chunk.js",
     "static/media/logo-rut-color.png": "/static/media/logo-rut-color.65493b272810e079438e.png",
     "static/media/Robotomediumitalic.ttf": "/static/media/Robotomediumitalic.35abcf5eb54b0c398e52.ttf",
@@ -72,11 +72,11 @@
     "static/media/arrow.svg": "/static/media/arrow.55a4ec4915bbcdabc744.svg",
     "static/media/arrow-blue.svg": "/static/media/arrow-blue.d97550c6523356d4c133.svg",
     "main.50239688.css.map": "/static/css/main.50239688.css.map",
-    "main.d9587ca6.js.map": "/static/js/main.d9587ca6.js.map",
+    "main.6834cfb4.js.map": "/static/js/main.6834cfb4.js.map",
     "787.9e52edbe.chunk.js.map": "/static/js/787.9e52edbe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.50239688.css",
-    "static/js/main.d9587ca6.js"
+    "static/js/main.6834cfb4.js"
   ]
 }
