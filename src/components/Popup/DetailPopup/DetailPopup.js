@@ -7,11 +7,11 @@ import PreloaderPopup from '../../Preloader/PreloaderPopup/PreloaderPopup.js';
 function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoadingRequest }) {
 
   const isShowRequestError = {
-    isShow: true,
+    isShow: false,
     text: 'Запись на проекты закрыта',
   }
 
-  const isBlockSubmitButton = true;
+  const isBlockSubmitButton = false;
 
 	const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [currentData, setCurrentData] = React.useState({});
@@ -65,7 +65,7 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
 				:
 				<>
 				<h2 className='popup__title popup__title_margin_bottom'>{currentData.name}</h2>
-        <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Партнер проекта:</span>{currentData.customer.shortname}</p>
+        <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Партнер проекта:</span>{currentData.customer.shortname || ''}</p>
         <p className='data__text'><span className='data__text_font_bold data__text_margin_right'>Количество команд:</span>{currentData.teams_count}/{currentData.max_teams}</p>
         {
           currentData?.tags[0]?.name === 'Конкурсный отбор'
