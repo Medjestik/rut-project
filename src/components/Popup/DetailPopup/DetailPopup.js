@@ -7,11 +7,11 @@ import PreloaderPopup from '../../Preloader/PreloaderPopup/PreloaderPopup.js';
 function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoadingRequest }) {
 
   const isShowRequestError = {
-    isShow: false,
+    isShow: true,
     text: 'Запись на проекты закрыта',
   }
 
-  const isBlockSubmitButton = false;
+  const isBlockSubmitButton = true;
 
 	const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [currentData, setCurrentData] = React.useState({});
