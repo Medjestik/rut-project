@@ -7,11 +7,11 @@ import PreloaderPopup from '../../Preloader/PreloaderPopup/PreloaderPopup.js';
 function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoadingRequest }) {
 
   const isShowRequestError = {
-    isShow: true,
+    isShow: false,
     text: 'Запись на проекты закрыта',
   }
 
-  const isBlockSubmitButton = true;
+  const isBlockSubmitButton = false;
 
 	const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [currentData, setCurrentData] = React.useState({});
@@ -72,7 +72,7 @@ function DetailPopup({ isOpen, onClose, popupName, onConfirm, project, isLoading
           &&
           <div className='popup__field'>
             <h4 className='popup__input-caption'>Конкурсный отбор:</h4>
-            <p className='detail__text'>Заказчик будет проводить отбор 3 команд. Не прошедшие отбор команды будут записываться на доступные к записи проекты.</p>
+            <p className='detail__text'>Заказчик будет проводить отбор 2 команд. Не прошедшие отбор команды будут записываться на доступные к записи проекты.</p>
           </div>
         }
         <div className='popup__field'>
