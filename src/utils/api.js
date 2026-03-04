@@ -20,7 +20,7 @@ export const getData = ({ teamId }) => {
 };
 
 export const getProjects = () => {
-  return fetch(`${BASE_URL}/projects?category=1,2`, {
+  return fetch(`${BASE_URL}/projects?category=4,5`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
