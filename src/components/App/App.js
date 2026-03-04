@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Project from '../Project/Project.js';
+import View from '../View/View.js';
 
 function App() { 
 
@@ -39,6 +40,9 @@ function App() {
       <Routes>
         <Route path='/teams/:teamId' element={
           <Project windowWidth={windowWidth} />
+        }/>
+        <Route path='/view' element={
+          <View windowWidth={windowWidth} />
         }/>
       </Routes> 
     </div>

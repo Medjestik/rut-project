@@ -19,6 +19,17 @@ export const getData = ({ teamId }) => {
   .then(res => handleResponse(res))
 };
 
+export const getProjects = () => {
+  return fetch(`${BASE_URL}/projects?category=1,2`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
 export const getTags = () => {
   return fetch(`${BASE_URL}/tags/`, {
     method: 'GET',
